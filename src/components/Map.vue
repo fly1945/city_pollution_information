@@ -14,7 +14,6 @@ import { PointLayer, PolygonLayer } from "@antv/l7";
 import { GaodeMap } from "@antv/l7-maps";
 import { CityBuildingLayer } from "@antv/l7";
 import * as echarts from "echarts";
-//import {data} from '../hooks/city_model.js'
 export default {
   name: "HelloWorld",
   props: {
@@ -29,16 +28,18 @@ export default {
           zoom: 5,
         }),
       });
-      scene.on("loaded", () => {
-        const layer = new PolygonLayer({
-          zIndex: 0,
-        });
+      /* 
+            scene.on("loaded", () => {
+              const layer = new PolygonLayer({
+                zIndex: 0,
+              });
+      
+              layer.source(data).size(5).shape("extrude").color("#f00");
+              console.log("add");
+              scene.addLayer(layer);
+            });
+             */
 
-        /* eslint-disable */
-        layer.source(data).size(5).shape("extrude").color("#f00");
-        console.log("add");
-        scene.addLayer(layer);
-      });
     }
     function city_model() {
       const scene = new Scene({
@@ -47,20 +48,28 @@ export default {
           style: "dark",
           center: [120.173104, 30.244072],
           pitch: 70.41138037735848,
-          zoom: 17.18,
+          zoom: 11,
           rotation: 2.24, // 358.7459759480504
         }),
       });
 
       scene.on("loaded", () => {
-        {
-          const layer = new CityBuildingLayer({
-            zIndex: 0,
+        fetch(
+          "data/杭州_gcj02.json"
+          
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            const layer = new PolygonLayer({
+              zIndex: 0,
+            });
+
+            layer.source(data).size('Floor',(num)=>num*3).shape("extrude").color("#f00");
+            console.log("add");
+            scene.addLayer(layer);
           });
-          layer.source(data);
-          scene.addLayer(layer);
-        }
       });
+
     }
     //fun_3d();
     function city_model_test() {
