@@ -1,14 +1,15 @@
 <template>
-  <Map msg="Welcome to Your Vue.js App"/>
+  <Map/>
+  <Charts chart_type="bar"></Charts>
 </template>
 
 <script>
 import Map from './components/Map.vue'
-
+import Charts from './components/Charts.vue'
 export default {
   name: 'App',
   components: {
-    Map
+    Map,Charts
   }
 }
 </script>
