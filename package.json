@@ -9,7 +9,10 @@
   },
   "dependencies": {
     "@antv/l7": "^2.9.27",
+    "@antv/l7-draw": "^3.0.9",
     "@antv/l7-maps": "^2.9.27",
+    "@turf/turf": "^6.5.0",
+    "axios": "^1.2.2",
     "core-js": "^3.8.3",
     "echarts": "^5.4.0",
     "element-plus": "^2.2.18",
